@@ -1,0 +1,15 @@
+class Deportista:
+    def __init__(self, mysql):
+        self.mysql = mysql
+        self.conexion = self.mysql.connect()
+        self.cursor = self.conexion.cursor
+
+    def consultar (self):
+        sql =  f"SELECT * FROM inf_usuario WHERE id = {id}"
+        self.cursor.execute(sql)
+        resultado = self.cursor.fetchall()
+        self.conexion.commit()
+        return resultado
+    
+    def agregar(self, deport):
+        sql = f"INSERT INTO inf_usuario(`id`, `nombre`, `estatura`, `peso`, `fecha_nacimiento`) VALUES ('{deport[1]}', '{deport[2]}', {deport[3]}, {deport[4]}, '{deport[5]}')"

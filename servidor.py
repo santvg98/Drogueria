@@ -29,14 +29,8 @@ servidor.config['MYSQL_DATABASE_HOST'] = 'localhost'
 servidor.config['MYSQL_DATABASE_PORT'] = 3306
 servidor.config['MYSQL_DATABASE_USER'] = 'root'
 servidor.config['MYSQL_DATABASE_PASSWORD'] = ''
-servidor.config['MYSQL_DATABASE_DB'] = 'gestionclientes'
+servidor.config['MYSQL_DATABASE_DB'] = 'deporte'
 mysql.init_app(servidor)
 
 if __name__ == '__main__':
     servidor.run(host = '0.0.0.0', debug = True, port = 5000)
-
-    '''
-
-asdfsfdsadfasdfasdf
-
-    '''
