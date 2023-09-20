@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar un Corredor</title>
+</head>
+<body>
+    <form action="/guardardeport" method="post" enctype="multipart/form-data">
+        <h3>Creación de un nuevo corredor</h3>
+        <br><br>
+        <label for="id">ID:</label>
+        <input type="text" required name="id">
+        <label for="msg">{{msg}}</label>
+        <br>
+        <label for="nombre">Nombre</label>
+        <input type="text" required name="nombre">
+        <br>
+        <label for="estatura">Estatura</label>
+        <input type="number" required name="estatura">
+        <br>
+        <label for="peso">Peso</label>
+        <input type="number" required name="peso">
+        <br>
+        <label for="fecha_nacimiento">Fecha de nacimiento</label>
+        <input type="date" required name="fecha_nacimiento">
+        <br><br>
+        <input type="submit" value="Guardar">
+        <a href="/">Regresar</a>
+    </form>
+</body>
+</html>
