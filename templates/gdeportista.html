@@ -4,9 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion Deportistas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            display: inline-block;
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            margin: 20px;
+            border-radius: 5px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        a.edit {
+            background-color: #28a745;
+        }
+
+        a.delete {
+            background-color: #dc3545;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <a href="agregardeport">Agregar un nuevo deportista</a>
+    <a href="agregardeport" class="add-button">Agregar un nuevo deportista</a>
     <br><br>
     <table border>
         <thead>
@@ -16,22 +73,20 @@
                 <th>Estatura</th>
                 <th>Peso</th>
                 <th>Fecha de nacimiento</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
-            {%for art in res %}
+            {% for art in res %}
                 <tr>
-                    <td>{{art[0]}}</td>
-                    <td>{{art[1]}}</td>
-                    <td>{{art[2]}}</td>
-                    <td>{{art[3]}}</td>
-                    <td>{{art[4]}}</td>
-                    </td>
+                    <td>{{ art[1] }}</td>
+                    <td>{{ art[2] }}</td>
+                    <td>{{ art[3] }}</td>
+                    <td>{{ art[4] }}</td>
+                    <td>{{ art[5] }}</td>
                     <td>
-                        <a href="editardeportista/{{art[0]}}">Editar</a>
-                    </td>
-                    <td>
-                        <a onclick="return confirm('¿Seguro quiere eliminar este artículo?')" href="borrardeportista/{{art[0]}}">Eliminar</a>
+                        <a href="editardeportista/{{ art[1] }}" class="edit">Editar</a>
+                        <a onclick="return confirm('¿Seguro quiere eliminar este artículo?')" href="borrardeportista/{{ art[1] }}" class="delete">Eliminar</a>
                     </td>
                 </tr>
             {% endfor %}

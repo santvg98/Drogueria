@@ -21,7 +21,7 @@ repositorio creado en su cuenta personal de github
 '''
 
 from datetime import date
-from flask import Flask, redirect, render_template, request, send_from_directory
+from flask import Flask, redirect, render_template, request, send_from_directory 
 from flaskext.mysql import MySQL
 from constructor import Deportista
 import os
