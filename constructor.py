@@ -7,9 +7,9 @@ class Deportista:
         self.conexion = self.mysql.connect()
         self.cursor = self.conexion.cursor()
 
-    def registrar_auditoria(self, id_deportista): 
+    def registrar_auditoria(self, id_deportista, operacion): 
         registro_tiempo = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        sql = f"INSERT INTO auditoria (id_deportista, registro_tiempo) VALUES ('{id_deportista}', '{registro_tiempo}')"
+        sql = f"INSERT INTO auditoria (id_deportista, registro_tiempo, operacion) VALUES ('{id_deportista}', '{registro_tiempo}', '{operacion}')"
         self.cursor.execute(sql)
         self.conexion.commit()
 
@@ -25,7 +25,7 @@ class Deportista:
         self.cursor.execute(sql)
         self.conexion.commit()
         id_deportista = deport[0]
-        self.registrar_auditoria(id_deportista)
+        self.registrar_auditoria(id_deportista, 'creacion')
 
     def modificar(self, deport):
         sql = f"UPDATE inf_usuario SET nombre='{deport[1]}',estatura='{deport[2]}',peso='{deport[3]}',fecha_nacimiento='{deport[4]}' WHERE id='{deport[0]}'"
@@ -33,14 +33,13 @@ class Deportista:
         self.conexion.commit()
 
         id_deportista = deport[0]
-        self.registrar_auditoria(id_deportista)
+        self.registrar_auditoria(id_deportista, 'actualizacion')
 
     def borrar(self, id):
         sql = f"DELETE FROM inf_usuario WHERE id = {id}"
         self.cursor.execute(sql)
         self.conexion.commit()
-        
-        self.registrar_auditoria(id)
+        self.registrar_auditoria(id, 'eliminacion')
 
     def buscar(self, id):
         sql = f"SELECT * FROM inf_usuario WHERE id = {id}"

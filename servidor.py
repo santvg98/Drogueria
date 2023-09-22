@@ -57,6 +57,13 @@ def guardardeport():
     losDeportistas.agregar([id, nombre, estatura, peso, fecha_nacimiento])
     return redirect("/")
 
+@servidor.route('/borrardeportista/<id>')
+def borrardeportista(id):
+    losDeportistas.borrar(id)
+    return redirect('/')
+
+    
+
     
 
 
